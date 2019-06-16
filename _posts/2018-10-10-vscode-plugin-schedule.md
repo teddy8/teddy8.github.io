@@ -52,7 +52,7 @@ week
 
 可以看到每次写这些星期几的缩略都很麻烦，于是开发了一个简单的 vscode 插件 markdown-schedule-snippet，正是本文的标题，输入 `we` 自动生成如下代码
 
-插件地址 [ht](https://marketplace.visualstudio.com/items?itemName=HyG.schedule)
+插件地址 [hello222](https://marketplace.visualstudio.com/items?itemName=HyG.schedule)
 
 ``` bash
 
