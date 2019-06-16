@@ -47,6 +47,7 @@ week
 对于每一个 md 文件内部，我习惯按照星期几来记录，类似如下：
 
 <!--![](https://user-gold-cdn.xitu.io/2018/10/10/1665ccd109702abc?w=903&h=893&f=png&s=151884)-->
+![](https://naver.com)
 
 ## markdown-schedule-snippet
 
