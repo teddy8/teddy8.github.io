@@ -54,7 +54,7 @@ week
 
 插件地址 [ht](https://marketplace.visualstudio.com/items?itemName=HyG.schedule)
 
-``` markdown
+``` bash
 
 ## Mon.
 
