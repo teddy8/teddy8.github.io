@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: " hello world! "
 categories: HTML
 tags: firstContent
