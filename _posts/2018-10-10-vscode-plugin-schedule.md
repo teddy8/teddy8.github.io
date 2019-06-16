@@ -6,8 +6,7 @@ tags: 效率 vscode markdown
 author: teddy8
 ---
 
-* content
-{:toc}
+
 
 ## 起因
 
