@@ -15,7 +15,7 @@ author: teddy8
 
 ---
 
-## 코드 실행 결과
+## 소스코드 
 ``` js
 var a = "5";
 var b = 5;
@@ -23,12 +23,13 @@ var b = 5;
 console.log(a == b);
 console.log(a === b);
 ```
-
 ---
+## 실행결과
+
 
 ![](/assets/img/javascript\Double_Equals_vs_Triple_Equals.png)
 ---
-
+---
 ## 결론<br>
 "=="는 데이터 타입이 다를 경우 강제로 형변환을 하여 
 비교하기<br> 때문에 `내용만 같으면` 됩니다.<br><br>
