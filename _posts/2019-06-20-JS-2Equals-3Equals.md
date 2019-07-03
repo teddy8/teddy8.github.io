@@ -26,11 +26,10 @@ console.log(a === b);
 
 ---
 
-![](/_posts\img\javascript\Double_Equals_vs_Triple_Equals.png)
-
+![](/assets/img/javascript\Double_Equals_vs_Triple_Equals.png)
 ---
 
-## 결론적으로<br>
+## 결론<br>
 "=="는 데이터 타입이 다를 경우 강제로 형변환을 하여 
 비교하기<br> 때문에 `내용만 같으면` 됩니다.<br><br>
 "==="는 `내용뿐만 아니라, 데이터 타입도 같아야` 합니다.
