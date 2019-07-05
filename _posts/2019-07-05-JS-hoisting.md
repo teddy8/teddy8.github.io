@@ -20,7 +20,6 @@ author: teddy8
 소스코드
 ---
 example.js
----
 ``` js
 test();
 function test() {
@@ -31,7 +30,6 @@ function test() {
 가능
 ```
 example.js
----
 ``` js
 test();
 var test = function () {
@@ -42,7 +40,6 @@ var test = function () {
 오류 (함수를 선언문이 아닌 구현식으로 사용하는 것은 불가합니다)
 ```
 example.js
----
 ``` js
 var test = function () {
 	console.log("hello");
