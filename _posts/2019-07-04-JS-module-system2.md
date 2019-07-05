@@ -15,7 +15,6 @@ author: teddy8
 
 ---
 index.html
----
 ``` html
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +29,6 @@ index.html
 ```
 ---
 app.js
----
 ``` js
 import Person from './person.js';
 
@@ -38,7 +36,6 @@ const chulsu = new Person(20);
 chulsu.speedUp(5);
 ```
 person.js
----
 ``` js
 export default class Person {
   constructor(speed) {
