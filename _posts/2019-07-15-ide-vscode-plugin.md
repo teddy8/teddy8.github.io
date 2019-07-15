@@ -12,7 +12,7 @@ author: teddy8
 ## Goal
 2019 vscode의 인기있는 플러그인을 알아봅니다.<br>
 각각의 특징에 대해서도 간략히 서술합니다.<br>
-출처는 카톡 오픈채팅방(nodejs, react)과 구글(vscode 추천 플러그인)입니다.
+좋은게 있다면 댓글 남겨주세요!!
 
 ---
 
@@ -24,7 +24,7 @@ Auto Close Tag
 	말그대로 닫힘 태그 자동으로 만들어줌
 
 Auto Import
-	임포트 해야되는 상황에 자동으로 임포트해줌 (angular 예제라 잘 모르겟음)
+	임포트 해야되는 상황에 자동으로 임포트해줌
 	https://www.youtube.com/watch?v=y-CtH4lu4uI
 Beautify
 Bracket Pair Colorizer
@@ -49,4 +49,11 @@ REST Client
 Prettier Now
 Settings Sync
 Version Lens
+```
+
+### References
+```
+https://junhobaik.github.io/vsc-plugin-list/
+https://velog.io/@rtyu1120/%EB%82%B4%EA%B0%80-%EC%93%B0%EB%8A%94-Visual-Studio-Code-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%EB%AA%A8%EC%9D%8C%EC%A7%91-kmjtvc7xp8
+카카오톡 오픈채팅방(nodejs방, react방)
 ```
