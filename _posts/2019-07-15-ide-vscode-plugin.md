@@ -49,6 +49,9 @@ REST Client
 Prettier Now
 Settings Sync
 Version Lens
+
+gitlens
+    이 코드는 언제 누가 수정했고 이런거 다 알려줌
 ```
 
 ### References
