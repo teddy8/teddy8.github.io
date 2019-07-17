@@ -58,7 +58,7 @@ TODO Highlight
 Docker
     docker확장팩으로 docker파일생성과 일반적인 명령 수행 가능
 
-ESLint
+ESLint (JSLint, JSHint 보다 대세)
     자바스크립트 문법의 에러 표시 기능 또한,
     코드작성의 규칙을 지정하여 팀원간의 협력도구로도 사용
 
