@@ -3,7 +3,7 @@ layout: post
 title:  " JavaScript 프로미스(Promise) "
 categories: JavaScript
 comments: true
-tags: JavaScript js 프로미스 Promise
+tags: JavaScript js 프로미스 Promise 동기 비동기
 author: teddy8  
 ---
 * content
