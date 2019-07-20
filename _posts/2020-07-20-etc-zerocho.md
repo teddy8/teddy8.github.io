@@ -21,4 +21,4 @@ react 공부할려는 찰나에 구독자 5000명 이벤트를 열어주셔서 �
 
 물론 당첨이 안되더라도 추후에 꼭 수강할려고합니다!ㅋ
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HeW5mS0PdiU&list=PLcqDmjxt30RsflfvGYzVojsuHC7HpXe63" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HeW5mS0PdiU" frameborder="0" allowfullscreen></iframe>
