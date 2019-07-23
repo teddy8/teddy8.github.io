@@ -3,7 +3,7 @@ layout: post
 title:  " JavaScript 버블링(Bubbling) vs 캡처링(Capturing)"
 categories: JavaScript
 comments: true
-tags: JavaScript js 이벤트 버블링 Bubbling 캡처링 Capturing 흐름제어
+tags: JavaScript js 이벤트 버블링 Bubbling 캡처링 Capturing 흐름제어 전파제어
 author: teddy8  
 ---
 * content
@@ -62,8 +62,8 @@ C, D는 캡처링(Bottom-up) 단계에서 호출된다. (C의 리스너에 인�
 이벤트 흐름제어는 캡처링과 버블링으로 구분한다.
 그리고 이벤트 전파제어 방법에 대해 설명한다
 위에서 D를 클릭하면 3과 4가 출력된다.
-3만 출력하고 싶다면 어떻게 해야할까?
-stopPropagation() 메소드를 통해 해결할 수 있다. 
+그렇다면 3만 출력하고 싶다면 어떻게 해야할까?
+다음과 같이 stopPropagation() 메소드를 통해 해결할 수 있다. 
 ```
 
 ``` html
