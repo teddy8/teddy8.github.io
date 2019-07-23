@@ -78,7 +78,7 @@ C, D는 캡처링(Bottom-up) 단계에서 호출된다. (C의 리스너에 인�
   element2.addEventListener('click', e => console.log('2'));
   element3.addEventListener('click', e => {
       console.log('3');
-      event.stopPropagation();  // 전파 방지(버블링)
+      event.stopPropagation();  // 전파 방지(캡쳐링)
   }, true);
   element4.addEventListener('click', e => console.log('4'));
 </script>
