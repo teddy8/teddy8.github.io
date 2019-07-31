@@ -26,7 +26,7 @@ author: teddy8
 자동로그인 여부나 설문조사 선택한 것 유지할 때 사용한다.
 저장소의 구분은 (프로토콜 + 호스트 + 포트)로 한다. (ex: http://127.0.0.1:8080)
 ```
-공식문서 [https://teddy8.github.io/2019/07/15/ide-vscode-plugin/](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
+공식문서 [https://developer.mozilla.org/en-US/docs/Web/API/Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
 
 ## 세션스토리지 (Session Storage)
 ```
