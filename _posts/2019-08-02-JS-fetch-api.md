@@ -1,9 +1,9 @@
 ---
 layout: post   
-title:  " JavaScript XMLHttpRequest"
+title:  " JavaScript Fetch API"
 categories: JavaScript
 comments: true
-tags: JavaScript js 로컬스토리지 Local Storage 세션스토리지 Session Storage 쿠키 Cookie
+tags: JavaScript js Fetch API
 author: teddy8  
 ---
 * content
