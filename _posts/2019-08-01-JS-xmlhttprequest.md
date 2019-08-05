@@ -3,7 +3,7 @@ layout: post
 title:  " JavaScript XMLHttpRequest"
 categories: JavaScript
 comments: true
-tags: JavaScript js 로컬스토리지 Local Storage 세션스토리지 Session Storage 쿠키 Cookie
+tags: JavaScript js XMLHttpRequest
 author: teddy8  
 ---
 * content
