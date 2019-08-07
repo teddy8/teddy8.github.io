@@ -84,7 +84,7 @@ payment.html
 ```
 전체적인 흐름을 설명하고 위에 주석친 부분을 문단단위로 정리한다.
 
-main-frame인 158.html에 iframe이 내장되 있고 "카드입력" 버튼을 클릭하면 
+main-frame인 example.html에 iframe이 내장되 있고 "카드입력" 버튼을 클릭하면 
 iframe의 내부페이지가 payment.html로 변경된다. 그 후, 카드번호와 이름을 입력해서 
 결제하기로 submit하면 해당 폼 데이터를 payment.html에서 객체로 생성해서 
 postMessage로 main-frame에 전달한다.
