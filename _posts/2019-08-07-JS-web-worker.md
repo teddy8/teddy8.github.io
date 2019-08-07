@@ -77,8 +77,11 @@ onmessage = function(e) { // D
 }
 ```
 
-실행 결과
+## 실행 결과
 ![](/assets\img\javascript\web-worker.png)
+
+
+## 설명
 
 ```
 전체적인 흐름을 설명하고 위에 주석친 부분을 문단단위로 정리한다.
