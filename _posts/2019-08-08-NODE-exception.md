@@ -13,6 +13,10 @@ author: teddy8
 Node.js에서 다음과 같은 예외처리 방법 2가지를 예제를 통해 정리한다.
 1. 비동기(Async) 모듈, 콜백함수
 2. try-catch, throw
+
+참고로 
+동기(Sync) 패턴에선 try-catch를 사용할 수 있지만
+비동기(Async) 패턴에선 try-catch를 사용할 수 없다.
 ```
 
 ## 비동기(Async) 모듈
@@ -21,36 +25,47 @@ example.js
 ``` js
 "use strict";
 
-const cbFunc = (err, result) => {   // cbFunc라는 콜백함수 정의
-    if (err && err instanceof Error) // err에 값이 있으면서 Error객체면 console출력 후 return으로 함수 종료
+const cbFunc = (err, result) => {   
+    if (err && err instanceof Error) 
         return console.error(err.message); 
-    if (err) // err에 값이 있는데 Error 객체가 아닌 경우 console출력 후 return으로 함수 종료
+    if (err) 
         return console.error(err); 
 
-    console.log('에러를 반환하지 않습니다');
+    console.log('에러가 발생하지 않음');
 };
 
 const asyncFunction = (isTrue, callback) => {
-    const err = new Error('This is error!!');
-
     if (isTrue)
         return callback(null, isTrue);
     else 
-        return callback(err);
+        return callback(new Error('This is error!!'));
 };
 
 asyncFunction(true, cbFunc);
 asyncFunction(false, cbFunc);
 ```
 
+```
+asyncFunction의 첫번째 인자에 어떤 연산의 결과값이 들어간다고 가정하고,
+두번째 인자에 예외를 처리하는 비동기 콜백함수인 cbFunc를 넣어준다고 하자
+
+연산의 결과값이 true(이상이 없는)인 경우 예외가 발생할 필요가 없으므로, 
+cbFunc의 예외변수에는 null을 전달하고 결과값은 true를 전달한다.
+
+연산의 결과값이 false(이상이 있는)인 경우 예외를 발생시켜야 하므로, 
+cbFunc의 예외변수에 에러객체를 전달한다.
+
+이 때, cbFunc는 에러가 빈 값이면 "에러가 발생하지 않음"을 출력하고,
+에러정보가 있다면 에러메시지를 출력하는데
+에러객체로 넘어온경우 객체에 담긴 메시지를 출력하고 그렇지 않은경우 그 메시지 자체를 출력한다.
+```
+
 실행결과
 ```
-에러를 반환하지 않습니다
+에러가 발생하지 않음
 This is error!!
 ```
-```
- 비동기 콜백함수 cbFunc를 정의한다
-```
+
 
 ## try-catch, throw
 example.js
@@ -88,4 +103,9 @@ try {
   path: 'c:\\undefined' }
 ```
 ```
+내장 모듈인 fs(파일시스템) 모듈을 가져와서
+특정경로에 있는 파일을 출력하는 상황이다.
+"/undefined/" 경로의 파일리스트를 가져오는 순간(아무것도 없어서) 
+예외가 발생하여 바로 catch문으로 가게 된다.
+따라서 try문 안에 있는 "hello"는 출력되지 않는다.
 ```
