@@ -13,7 +13,7 @@ author: teddy8
 Node.js에서 fs 모듈을 활용하여 폴더를 생성하는 방법을 예제를 통해 정리한다.
 ```
 
-## 비
+## 소스코드
 example.js
 
 ``` js
@@ -57,11 +57,10 @@ checkDir(path, (err, isTrue) => {
 
 ```
 fs.stat 모듈을 사용 폴더를 생성했다.
-하지만 fs.open(), fs.readFile(), fs.writeFile()와 같이 파일을 직접 접근할 때는 
-파일을 직접 읽고 쓰기 시에는 반드시 접근 권한을 확인해야 하므로 fs.stat대신 fs.access 모듈이 권장된다.  
- 
-
-이 경우에는 
-활용 방법에 대해서는 다음에 살펴본다 
-fs.stat 모듈과 fs.Stat 클래스에 대해 더 자세한 내용은 공식홈페이지 www 에서 확인할 수 있다
+하지만 fs.open(), fs.readFile(), fs.writeFile()와 같이 
+파일을 직접 접근하여 읽고 쓸 때는 반드시 접근 권한을 확인해야 하므로 
+fs.stat보단 fs.access 모듈이 권장된다.   
+fs.access 모듈 활용 방법은 다음에 포스팅 예정이다
+fs.stat 모듈과 클래스에 대해 더 자세한 내용은 다음링크에서 확인할 수 있다
 ```
+[https://nodejs.org/docs/latest/api/fs.html#fs_fs_stat_path_callback](https://nodejs.org/docs/latest/api/fs.html#fs_fs_stat_path_callback)
