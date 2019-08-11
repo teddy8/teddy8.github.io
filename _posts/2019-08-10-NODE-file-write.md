@@ -14,6 +14,7 @@ Node.js에서 fs, path 모듈을 사용하여 파일에 입력하는 방법을 �
 ```
 
 ## 소스코드
+
 example.js
 
 ``` js
@@ -44,8 +45,6 @@ const printErrIfExist = (err) => { // C
     if (err) console.log(err);
 };
 
-
-
 const folderName = 'test' // D
 const fileName = 'hello.txt'
 const filePath = path.join(__dirname, folderName, fileName);    
@@ -62,6 +61,7 @@ fs.open(filePath, 'wx', (err, fd) => { // E
 ```
 
 ## 설명
+
 ```
 위에 주석친 부분을 문단단위로 정리한다.
 
@@ -88,6 +88,7 @@ fs.open(경로, wx(쓰기 접근 권한), 에러정보)
 ```
 
 ## 마치며
+
 ```
 파일을 생성할 때 해당 경로에 폴더가 존재하지 않으면
 fs.open을 실행할 때 에러가 발생한다.
