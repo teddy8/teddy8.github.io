@@ -1,9 +1,9 @@
 ---
 layout: post   
-title:  " Node.js 파일 읽기(File Read) "
+title:  " Node.js 파일 출력(File Read) "
 categories: Node.js
 comments: true
-tags: Node.js 파일 읽기 File Read
+tags: Node.js 파일 입출력 출력 File Read
 author: teddy8  
 ---
 * content

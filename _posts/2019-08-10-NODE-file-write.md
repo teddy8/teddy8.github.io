@@ -3,7 +3,7 @@ layout: post
 title:  " Node.js 파일 입력(File Write) "
 categories: Node.js
 comments: true
-tags: Node.js 파일 입력 File Write
+tags: Node.js 파일 입출력 입력 File Write
 author: teddy8  
 ---
 * content
