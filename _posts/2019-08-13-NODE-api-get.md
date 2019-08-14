@@ -1,9 +1,9 @@
 ---
 layout: post   
-title:  " Node.js api 작성 "
+title:  " Node.js API 작성(GET) "
 categories: Node.js
 comments: true
-tags: Node.js api 작성 http get post
+tags: Node.js api 작성 http get
 author: teddy8  
 ---
 * content
@@ -12,7 +12,7 @@ author: teddy8
 ```
 Node.js에서 api를 작성하는 방법을 예제를 통해 정리한다.
 api는 기본적으로 요청/응답한다.
-다음은 GET 메소드를 통한 요청/응답하는 api 예제이며,
+다음은 GET 메소드를 통한 요청/응답하는 api 이며,
 2가지 경로로 요청한 경우를 처리하는 예제이다.
 예를들면 다음과 같은 경우이다.
 1. http://127.0.0.1:3000/
@@ -68,8 +68,6 @@ server.listen(port, hostname, () => {
 ## 설명
 
 ```
-위에 주석친 부분을 문단단위로 정리한다.
-
 http의 createServer()메소드를 통해 서버를 생성한다.
 req의 method를 통해 4가지중 어떤 동작을 하는지 파악할 수 있다.(GET, POST, PUT, DELETE) 
 case 'GET'을 작성해 GET으로 요청한 경우를 처리해준다.
@@ -88,3 +86,11 @@ url의 parse()메소드를 통해 url의 문자열값을 객체값으로 파싱�
 
 ## 실행결과
 ![](/assets\img\javascript\node_api.png)
+
+{% highlight language linenos %}
+your code here
+{% endhighlight %}
+
+{% highlight language linenos=table %}
+your code here
+{% endhighlight %}
