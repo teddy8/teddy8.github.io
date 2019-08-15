@@ -76,7 +76,7 @@ res.end() 메소드를 통해 응답 전송을 완료한다.
 GET 요청은 웹 브라우저에 url을 입력해서 호출하였다.
 POST 요청은 'Postman'이라는 Tool을 사용하면 유용하다.
 ```
-다운로드 링크 : https://www.getpostman.com/downloads/
+다운로드 링크 : [https://www.getpostman.com/downloads/](https://www.getpostman.com/downloads/)
 
 ![](/assets\img\javascript\node_api_post.png)
 
