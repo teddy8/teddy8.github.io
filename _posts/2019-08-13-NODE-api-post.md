@@ -70,3 +70,23 @@ chunk(덩어리)로 전달받은 문자형 데이터를 덧셈 연산으로 받�
 정상적으로 전달이 완료 된 경우 응답 상태 코드 200 반환하며, 
 res.end() 메소드를 통해 응답 전송을 완료한다.
 ```
+
+## Postman
+```
+GET 요청은 웹 브라우저에 url을 입력해서 호출하였다.
+POST 요청은 'Postman'이라는 Tool을 사용하면 유용하다.
+```
+다운로드 링크 : https://www.getpostman.com/downloads/
+
+![](/assets\img\javascript\node_api_post.png)
+
+```
+Untitled Request밑에 요청형태를 "POST"로 바꾸고
+url을 입력한다.(http://localhost:3000)
+Body의 "x-www-form-urlencoded"를 선택하고
+KEY와 VALUE에 값을 입력한 후
+(a1과 1, a2와 2를 입력했다)
+"Send"버튼을 누르면 보내진다.
+그럼 아래의 영역에서 전달받은 내용이 표시된다.
+({"a1":1,"a2":2})
+```
