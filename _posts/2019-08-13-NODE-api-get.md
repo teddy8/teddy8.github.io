@@ -87,10 +87,29 @@ url의 parse()메소드를 통해 url의 문자열값을 객체값으로 파싱�
 ## 실행결과
 ![](/assets\img\javascript\node_api.png)
 
-{% highlight language linenos %}
-your code here
-{% endhighlight %}
+## http.get
+```
+GET요청을 웹 브라우저의 url입력을 통해 호출하였지만 http.get()메소드를 통해서도 가능하다.
+보통 http의 request()메소드를 사용하지만, body 데이터의 전송 없이 간단하게 요청할 때는 
+http.get()를 사용한다.
+```
 
-{% highlight language linenos=table %}
-your code here
-{% endhighlight %}
+example.js
+
+``` js
+http.get('http://localhost:3000', (res) => {  
+  let data = '';
+  res.on('data', function(chunk) {
+    data += chunk;
+    console.log('data of res.on =====> ', data);
+  });
+  res.on('end', function() {
+    try {
+      console.log('end of res.on =====> ', data);
+      return data;
+    } catch (err) {
+      if (err) console.log(err);
+    }
+  });
+});
+```
