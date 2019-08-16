@@ -9,58 +9,72 @@ author: teddy8
 * content
 {:toc}
 
-## n
+## request
+[https://teddy8.github.io/2019/08/13/NODE-api-get/](https://teddy8.github.io/2019/08/13/NODE-api-get/)
 ```
-N
-```
-
-## 명령어
-
-```
-npm install npm@6.4.1 -g
-
-특정 버전 설치
+지난 포스팅에서 간단하게 GET요청을 할 때 http의 get()메소드를 사용했다. 
+이번에는 더 직관적으로 사용할 수 있는 request로 요청하는 방법을 예제를 통해 정리한다.
 ```
 
-```
-npm update -g npm
-
-최신 버전 설치
-```
+![](/assets\img\node\request.png)
 
 ```
-npm -v
+테스트할 url을 간단히 설명하면
+'uinames.com/api' 라는 api url에서 테스트를 진행한다.
+region에 'korea'를 넣으면 그 지역에 해당하는 데이터만,
+amount에 적은 숫자로 반환 될 데이터의 양을 설정할 수 있다.
+```
 
-현재 버전 확인
+## 소스코드
+
+``` js
+const request = require('request');
+
+const options = {
+  url : 'http://uinames.com/api',
+  json : true,
+  qs : { 
+    region: 'korea', 
+    amount: 3 
+  }
+};
+
+request.get(options, (err, res, result) => {
+  if (err) return console.log('err', err);
+  if (res && res.statusCode >= 400) return console.log(res.statusCode);
+
+  result.forEach(person2 => {
+    console.log(`${person2.name}${person2.surname} 님의 성별은 ${person2.gender}입니다.`);
+  });
+});
+```
+
+## 설명
+
+```
+request 모듈을 npm으로 설치한 뒤, requeire로 가져온다.
+url은 'uinames.com/api'이며,
+json을 'true'로 설정해 json형태로 읽어들인다.
+qs에 region: 'korea', amount: 3을 넣음으로 써
+url뒤에 'uinames.com/api?region=korea&amount' 이런식으로 붙여서 요청하게 된다.
+
+request.get()메소드를 통해 설정한 객체값을 넣어주고
+상태코드가 400이상이거나(비정상), 에러 유무를 확인한다.
+그 후, 하나씩 꺼내어 출력한다.
+```
+
+출력결과
+```
+탁예원님의 성별은 female입니다.
+곽영철님의 성별은 male입니다.
+모민지님의 성별은 female입니다.
 ```
 
 ```
-npm init
-
-패키지에 필요한 기본 파일들을 자동 생성한다.
-패키지이름,버전,설명 등의 설정을 지정할 수 있는데 
-기본 값으로 하고 싶다면 그냥 enter만 계속 누르면 된다.
-완료되면 package.json파일과 node_modules폴더가 생성된다.
-```
-
-```
-npm install <패키지명>
-
-원하는 패키지를 다운 받을 수 있다.
-npm install <패키지명> --save를 하면 package.json파일의 
-dependencies속성에 자동으로 버전 정보가 기록된다.
-```
-
-```
-npm install
-
-어떤 프로젝트에 이미 package.json 파일이 작성되있다면 
-npm install 명령어만 실행하면 된다.
-그럼 package.json파일의 dependencies속성 정보를 읽어서 
-지정된 패키지들을 자동으로 설치한다
-```
-
-```
+추가로 헤더값을 설정할 수 있으며,
+POST요청, 이미지전송, 비동기처리도 가능하다.
 더 자세한 사항은 공식문서에서 확인할 수 있다.
 ```
-공식문서 : [https://www.npmjs.com](https://www.npmjs.com)
+공식문서<br>
+[https://github.com/request/request#readme](https://github.com/request/request#readme)<br>
+[https://github.com/request/request-promise-native](https://github.com/request/request-promise-native)
