@@ -85,7 +85,7 @@ url의 parse()메소드를 통해 url의 문자열값을 객체값으로 파싱�
 ```
 
 ## 실행결과
-![](/assets\img\javascript\node_api.png)
+![](/assets\img\node\api_get.png)
 
 ## http.get
 ```

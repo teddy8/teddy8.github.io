@@ -71,4 +71,4 @@ false를 반환했을 경우(동일한 파일명이 존재하지 않음)나
 ```
 
 ## 실행 결과
-![](/assets\img\javascript\file_search.png)
+![](/assets\img\node\file_search.png)

@@ -78,7 +78,7 @@ POST 요청은 'Postman'이라는 Tool을 사용하면 유용하다.
 ```
 다운로드 링크 : [https://www.getpostman.com/downloads/](https://www.getpostman.com/downloads/)
 
-![](/assets\img\javascript\node_api_post.png)
+![](/assets\img\node\api_post.png)
 
 ```
 Untitled Request밑에 요청형태를 "POST"로 바꾸고
