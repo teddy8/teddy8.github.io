@@ -60,7 +60,7 @@ url뒤에 'uinames.com/api?region=korea&amount' 이런식으로 붙여서 요청
 
 request.get()메소드를 통해 설정한 객체값을 넣어주고
 상태코드가 400이상이거나(비정상), 에러 유무를 확인한다.
-그 후, 하나씩 꺼내어 출력한다.
+그 후, result변수로 response받은 내용을 하나씩 꺼내어 출력한다.
 ```
 
 출력결과
