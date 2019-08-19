@@ -1,6 +1,6 @@
 ---
 layout: post   
-title:  " JavaScript "
+title:  " JavaScript 커스텀 이벤트(Custom Event)"
 categories: JavaScript
 comments: true
 tags: JavaScript js 
