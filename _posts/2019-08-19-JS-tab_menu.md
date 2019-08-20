@@ -17,7 +17,7 @@ js에서 탭 메뉴(Tab Menu)에 대한 내용을 예제를 통해 정리한다.
 ```
 '체코'탭을 누르면 url뒤에 #czech가
 '독일'탭을 누르면 url뒤에 #germany가 붙는다.
-이처럼 탭이 바뀔 때마다 url이 변경되는
+이처럼 탭이 바뀔 때마다 브라우저의 url이 변경되는
 해쉬 URL값을 통한 탭 메뉴 예제이다.
 ```
 ![](/assets\img\javascript\tab_menu.png)
@@ -64,30 +64,29 @@ function createTabs(selector) { // B
 
   function activate(target) { // C   
     const hash = target.hash;
-    console.log('hash = ' + hash);  // #czech #germany #british
-    const anchors = target.closest('ul') // closest() 메소드를 통해 부모 요소들 중 가장 가까운 <ul> 요소 선택
-    .querySelectorAll('li a');  // 해당 ul요소의 li요소의 모든 a요소를 변수에 할당
+    const anchors = target.closest('ul')
+    .querySelectorAll('li a');  
     
-    Array.from(anchors).forEach(v => v.className = '');  // 기존에 활성화된 탭 제거하기 위해 모든 a요소들의 클래스 명 제거
-    Array.from(tabContentEl.children).forEach(v => v.style.display = 'none'); // 전체 탭 상세 내용을 담고 있는 모든 요소(class가 tab_content인 요소)들을 화면에서 보이지 않게 처리
-    tabContentEl.querySelector(hash).style.display = '';  // hash를 selector로 찾아서 display를 초기화해서 화면에 보여지게 한다.
+    Array.from(anchors).forEach(v => v.className = '');  
+    Array.from(tabContentEl.children).forEach(v => v.style.display = 'none'); 
+    tabContentEl.querySelector(hash).style.display = '';  
     target.className = 'active';
   } // 끝
 
-  const handleHash = () => { // D    해쉬가 변경될 때 처리하는 콜백 메소드 정의
-    if (location.hash) {  // 현재 해쉬값이 있으면
-      const selector = `a[href="${location.hash}"]`;  // 해당 해쉬값을 href 속성으로 가지는 탭버튼을 선택
-      activate(document.querySelector(selector)); // activate()메소드를 통해 해당 탭버튼 활성화
+  const handleHash = () => { // D    
+    if (location.hash) {  
+      const selector = `a[href="${location.hash}"]`;  
+      activate(document.querySelector(selector)); 
     } else {
-      activate(firstTabEl); // 현재 해쉬값이 없으면 첫번째 탭을 활성화 시킴
+      activate(firstTabEl); 
     }
-  } // 끝
+  }
 
-  window.addEventListener('hashchange', handleHash);  // 브라우저의 URL 해쉬값이 변경할 때마다 'hashchange'이벤트 발생
-  handleHash(); // createTabs()메소드를 호출할 당시 브라우저의 URL에 해쉬값에 대한 처리
+  window.addEventListener('hashchange', handleHash);  // E
+  handleHash(); 
 }
 
-createTabs('.tabs');  // createTabs()메소드를 통해 탭메뉴 생성.(class가 tabs인 요소를 createTabs()메소드에 전달)
+createTabs('.tabs');  // F
 </script>
 </body>
 </html>
@@ -109,5 +108,21 @@ class가 tab_content인 요소를 selector로 찾아서 변수 선언한다.
 모든 li중 첫번째 li의 child요소를 첫번째탭 요소로 지정하기 위한 변수 선언한다.
 
 [C] 특정탭을 활성화하기 위한 activate()메소드를 정의한다. 특정탭의 <a>요소를 인자로 받는다.
- 전달받은 <a>요소의 hash 속성값을 상수로 정의한다.
+전달받은 <a>요소의 hash 속성값을 상수로 정의한다.
+(hasg 속성값은 예를들면 #czech #germany #british ... 이다)
+closest()메소드를 통해 부모 요소들 중 가장 가까운 <ul> 요소를 선택하고 
+해당 ul요소의 li요소에 있는 모든 a요소를 변수에 할당한다.
+
+기존에 활성화된 탭을 제거하기 위해 모든 a요소들의 클래스 명을 제거한다.
+전체 탭의 상세 내용을 담고 있는 모든 요소(class가 tab_content인)들을 화면에서 보이지 않게 처리한다.
+hash를 selector로 찾은 후, display를 초기화해서 화면에 보여지게 한다.
+
+[D] 해쉬가 변경될 때 처리하는 콜백 메소드를 정의한다.
+현재 해쉬값이 있으면 해당 해쉬값을 href 속성으로 가지는 탭버튼을 선택하고, activate()메소드를 통해 해당 탭버튼 활성화한다.
+현재 해쉬값이 없으면 첫번째 탭을 활성화 시킨다.
+
+[E] 'hashchange'이벤트 리스너를 등록한다. (브라우저의 URL 해쉬값이 변경될 때마다 'hashchange'이벤트가 발생한다.)
+handleHash()콜백 메소드를 통해 createTabs()메소드를 호출할 당시의 브라우저의 URL 해쉬값에 대해 처리한다.
+
+[F] createTabs()메소드의 호출을 통해 탭메뉴를 생성한다.(class가 tabs인 요소를 createTabs()메소드에 전달)
 ```
