@@ -1,6 +1,6 @@
 ---
 layout: post   
-title:  " JavaScript 투두리스트(Todo List)"
+title:  " JavaScript 투두리스트(Todo List) (2)"
 categories: JavaScript
 comments: true
 tags: JavaScript js 
@@ -12,73 +12,22 @@ author: teddy8
 ```
 js에서 투두리스트(Todo List)를 예제를 통해 정리한다.
 ```
+## 실행결과
+```
+'할 일 추가'란에 텍스트를 입력 후, '+'버튼을 누르면 할 일을 추가할 수 있다. 각각의 할 일은 완료 여부를 지정할 수 있다.
+```
+
+![](/assets\img\javascript\todo_list(2).png)
 
 ## 예제 소스코드
 example.html
 ``` html
-<!DOCTYPE html>
-<html>
-<head>
-  <title>할일 앱 만들기 예제</title>
-</head>
-<body>
-  <script src="./src/models.js"></script>
-  <script>
-    const todos = new TodoManager(); // A
-    todos.addTodo('공부하기');
-    todos.addTodo('운동하기');
-    console.log(todos.getList());
-    console.log(todos.leftTodoCount);
-    setTimeout(() => {
-      todos.getList()[0].toggle()
-      console.log(todos.leftTodoCount);
-      console.log(todos.getList());
-    }, 3000);
-  </script>
-</body>
-</html>
+
 ```
 
 models.js
 ``` js
-class Todo { // B
-  constructor(contents, done) { 
-    this.contents = contents;
-    this.done = done;
-  }
-  toggle() {  
-    this.done = !this.done;
-  }
-}
 
-class TodoManager { // C
-  constructor(todos = []) { 
-    this._todos = [];
-    todos.forEach(todo => {
-      this.addTodo(todo.contents, todo.done);
-    });
-  }
-
-  addTodo(contents, done = false) { // D
-    const newTodo = new Todo(contents, done);
-    this._todos.push(newTodo);
-    return newTodo;
-  }
-
-  getList() { // E
-    return this._todos;
-  }
-
-  get leftTodoCount() { // F  
-    return this._todos.reduce((p, c) => {
-      if (c.done === false) { 
-        return ++p;
-      } else {
-        return p;
-      }
-    }, 0);
-  }
-}
 ```
 
 ## 설명
@@ -124,17 +73,3 @@ Todo()클래스를 통해 생성한 인스턴스를 반환한다.
 즉, 미완료 작업의 개수만 더해서 반환한다.
 
 ```
-
-## 실행결과
-```
-처음에 2개의 할 일을 추가했으므로 2개의 할 일이 기록된 리스트가 출력된다.
-그리고 남은 할 일의 개수를 출력했을 때 2가 출력된다.
-그 후, 3초뒤 첫번째 할 일에 toggle()을 수행하고 
-남은 할 일의 개수를 출력하면 1이 출력된다.
-그 이유는 남은 할 일의 개수는 미완료 작업의 개수를 반환하는데 
-첫번째 할 일에 toggle()을 수행함으로 써 완료 여부가
-false에서 true로 변경되었기 때문에
-남은 미완료 작업의 개수는 1개가 되기 때문이다.
-한번 더 할 일 리스트를 출력해보면 첫번째 할 일이 true로 변경되어있다.
-```
-![](/assets\img\javascript\todo_list.png)
