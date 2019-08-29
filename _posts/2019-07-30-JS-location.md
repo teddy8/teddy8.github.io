@@ -139,9 +139,13 @@ example.html
 location.assign으로도 가능하다
 ```
 
-## 부록
+## 추가사항
 ```
-location.search는 
+[1] location.search는 
 ?a=12&b=34 와 같이
 GET방식으로 넘긴 데이터값을 가져올 수 있다.
+
+[2] 현재 URL의 모든 내용을 가져와서 replace를 통해 새로고침을 하는 식으로도 쓸 수 있다.
+str = location.protocol + '//' + location.hostname + location.pathname + location.search + location.hash
+location.replace(str);
 ```
