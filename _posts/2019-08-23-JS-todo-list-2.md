@@ -11,10 +11,14 @@ author: teddy8
 
 ```
 js에서 투두리스트(Todo List)를 예제를 통해 정리한다.
+
+순차적으로 이어지는 포스팅이다.
 ```
 ## 실행결과
 ```
-'할 일 추가'란에 텍스트를 입력 후, '+'버튼을 누르면 할 일을 추가할 수 있다. 각각의 할 일은 완료 여부를 지정할 수 있다.
+'할 일 추가'란에 텍스트를 입력 후, '+'버튼을 누르면 할 일을 추가할 수 있다. 
+각각의 할 일은 체크박스처럼 완료 여부를 지정할 수 있다.
+현재 체크되 있는 완료 여부의 개수는 변경될 때 마다 갱신 된다.
 ```
 
 ![](/assets\img\javascript\todo_list(2).png)
@@ -22,54 +26,145 @@ js에서 투두리스트(Todo List)를 예제를 통해 정리한다.
 ## 예제 소스코드
 example.html
 ``` html
-
+<!DOCTYPE html>
+<html>
+<head>
+  <title>할 일 앱 만들기 예제</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="title">
+    <h1>나의 하루</h1>
+    <h2>10월 28일</h2>
+  </div>
+  <div class="todo-container">
+  </div>
+  <div class="add-todo">
+    <button>+</button>
+    <input type="text" placeholder="할 일 추가">
+  </div>
+  <script src="./models.js"></script>
+  <script src="./app.js"></script>
+  <script>
+    const todoApp = new TodoApp([ // A 
+      { contents: "공부하기", done: false },
+      { contents: "놀기", done: true },
+      { contents: "밥먹기", done: false }
+    ]);
+  </script>
+</body>
+</html>
 ```
 
-models.js
+app.js
 ``` js
+class TodoApp {
+  constructor(todos) { // B
+    this.todoManager = new TodoManager(todos);
+    this.todoContainerEl = document.querySelector(".todo-container");
+    this.titleEl = document.querySelector(".title h2");
+    this.plusBtnEl = document.querySelector(".add-todo button");
+    this.bindEvents();
+  }
 
+  renderTodos() {  // C   
+    this.todoContainerEl.innerHTML = '';  
+    this.todoManager.getList().forEach((todo, i) => {   
+      const todoEl = this.createTodoEl(todo, i); 
+      this.todoContainerEl.appendChild(todoEl); 
+    });
+    this.renderTitle(); 
+  }
+
+  createTodoEl(todo, id) {  // D     
+    const todoEl = document.createElement("div");
+    todoEl.id = "todo-" + id;
+    todoEl.className = "todo";
+    todoEl.innerHTML = 
+      `<input type="checkbox" ${todo.done ? "checked" : ""}> 
+        <label>${todo.contents}</label>`;
+    return todoEl;
+  }
+
+  renderTitle() { // E     
+    const now = new Date(); 
+    const month = now.getMonth(); 
+    console.log('month = ', month);
+    const date = now.getDate();
+    if (this.titleEl) {
+      this.titleEl.innerHTML = 
+        `${month}월 ${date}일 <span class="left-count"> 
+          (${this.todoManager.leftTodoCount}개)</span>`;  
+    }
+  }
+
+  bindEvents() { // F     
+    this.plusBtnEl.addEventListener('click', evt => { 
+      var textEl = document.querySelector('.add-todo input[type="text"]'); 
+      this.todoManager.addTodo(textEl.value); 
+      textEl.value = '';  
+      this.renderTodos(); 
+    });
+    this.todoContainerEl.addEventListener('click', evt => {
+      if (evt.target.nodeName === 'INPUT' && evt.target.parentElement.className === 'todo') { 
+        const clickedEl = evt.target.parentElement;
+        const index = clickedEl.id.replace('todo-', '');  
+        this.todoManager.getList()[index].toggle(); 
+        this.renderTitle(); 
+      }
+    });
+  }
+}
 ```
 
 ## 설명
 
 ```
 위에 주석친 부분을 문단단위로 정리한다. 
+
 // 할 일 데이터를 화면에 그림
-[A] TodoManager()클래스를 통해 인스턴스를 생성한다.
-addTodo()메소드를 통해 2개의 할 일을 추가한다.
-추가했던 할 일의 목록을 getList()메소드를 사용해 출력한다.
-leftTodoCount메소드를 사용해 남아있는 할 일의 개수를 출력한다.
-setTimeout()메소드를 통해 3초 후 아래의 명령을 수행한다.
-getList()메소드를 통해 첫번째에 등록되 있는 할 일을 토글한다.
-(완료여부가 true면 false, false면 true로 변경 됨)
-leftTodoCount메소드를 사용해 남아있는 할 일의 개수를 출력한다.
-할 일의 목록을 getList()메소드를 사용해 출력한다.
+[A] TodoApp()클래스를 통해 3개의 할 일과 완료여부를 생성자를 통해 인스턴스를 생성한다.
 
-[B] Todo클래스를 정의한다. 
-생성자(constructor)는 할 일과 완료 여부를 설정할 수 있다.
-toggle()메소드를 정의한다. 
-완료 된 상태에서 호출하면 완료되지 않은 상태가 된다.
-반대로 완료되지 않은 상태에서 호출하면 완료 된 상태가 된다.
+[B] models.js의 TodoManager()클래스를 사용해 생성자로 전달받은 할 일들과 완료여부를 리스트에 모두 push시킨다.
+할 일들의 내용이 표시되는 영역을 찾아 변수 선언한다.
+타이틀 영역을 찾아 변수 선언한다. (현재날짜와 완료여부 개수가 표시되는 곳)
+'+'버튼을 찾아 변수 선언한다.
+bindEvents()를 호출한다. (처리해야 할 이벤트를 모아놓은 메소드)
 
-[C] TodoManager클래스를 정의한다.
-생성자(constructor)는 할 일의 리스트를 전달받았을 경우
-addTodo()메소드를 통해 각각의 할 일을 추가한다.
-(멤버변수 _todos라는 리스트에 추가 된다)
+[C] renderTodos()를 정의한다. (할 일 데이터를 화면에 그려주는 메소드)
+모든 데이터를 지우고 todoManager의 getList()를 통해 할 일과 완료여부가 담긴 리스트를 가져온다.
+각각의 할일과 완료여부는 createTodoEl()에 전달한다. (해당 데이터로 div영역을 생성하는 메소드)
+생성된 div영역은 todoContainer의 자식으로 달아준다.
+renderTitle()메소드를 통해 현재날짜와 남은 할 일을 갱신한다.
 
-[D] addTodo()메소드를 정의한다. 
-할 일과 완료 여부를 인자로 받는다.
-Todo()클래스를 통해 할 일과 완료 여부를 설정한 인스턴스를 생성한다.
-멤버변수인 _todos 리스트에 push()메소드를 통해 원소를 추가한다.
-Todo()클래스를 통해 생성한 인스턴스를 반환한다.
+[D] createTodoEl()메소드를 정의한다. 
+('+'버튼을 눌렀을 때 할 일 데이터를 통해 화면에 그려질 div영역을 생성한다)      
 
-[E] getList()메소드를 정의한다.
-멤버변수인 _todos 리스트를 반환한다.
+[E] renderTitle()메소드를 정의한다.
+(현재날짜와 남은 할 일을 갱신한다) 
+Date()객체를 사용해 현재 날짜를 가져온다. 
+todoManager의 leftTodoCount()메소드를 통해 남은 할 일의 개수를 표시해준다.
+이 메소드는 할 일이 추가되거나 완료여부가 변경될 때 마다 호출 되어야 한다.
 
-[F] leftTodoCount()메소드를 정의한다.
-이 메소드는 남은 할일의 개수를 반환한다.
-읽기만 가능한 메소드이기 때문에 앞에 get이 붙는다.  
-멤버변수인 _todos 리스트에 reduce()메소드를 통해 
-완료 여부가 false인 경우만 count를 진행한다.
-즉, 미완료 작업의 개수만 더해서 반환한다.
+[F] bindEvents()메소드를 정의한다. (등록해야하는 이벤트리스너를 모아놓은 메소드) 
 
+plusBtnEl에 등록한 이벤트리스너는 할 일을 입력하고 '+'버튼을 클릭하면 발생된다.
+입력한 내용은 todoManager를 통해 할 일의 내용과 완료여부를 추가한다.
+input창에 입력한 내용은 공백으로 비워준다.
+renderTodos()메소드를 통해 할 일들을 화면에 다시 그려준다.
+
+todoContainerEl에 등록한 이벤트리스너는 완료 여부를 클릭했을 경우 발생된다.
+(클릭한 타겟의 nodeName이 'input'이면서 부모요소의 class가 'todo'일 경우)
+몇번째에 있는 할 일의 완료 여부를 클릭했는지 파악하기 위해 id값에 있는 todo- 뒤에 숫자를 추출한다.
+추출한 숫자로 todoManager의 getList를 통해 인덱스로 접근 후 toggle()메소드를 수행한다. (t->f OR f->t)
+renderTitle()메소드를 통해 현재날짜와 남은 할 일을 갱신한다.
+```
+
+## 리뷰
+```
+3개의 할 일이 등록되어 있을 때, 4번째 할 일을 추가할 경우
+현재 화면에 보이는 모든 할 일을 제거한 후 할 일들을 다시 하나하나 표시한다.
+이 방식은 화면깜박임이 발생될 수 있으며, 자원적으로도 효율적이지 않다.
+따라서 할 일을 추가할 경우 기존에 있는 할 일들은 지우지 말고 그 상태에서 추가되어야 바람직 할 것 이다.
+이 부분에 대해서 추후 포스팅 예정이다.
 ```
