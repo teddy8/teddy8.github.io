@@ -102,7 +102,7 @@ class TodoApp {
 
   bindEvents() { // F     
     this.plusBtnEl.addEventListener('click', evt => { 
-      var textEl = document.querySelector('.add-todo input[type="text"]'); 
+      const textEl = document.querySelector('.add-todo input[type="text"]'); 
       this.todoManager.addTodo(textEl.value); 
       textEl.value = '';  
       this.renderTodos(); 
@@ -169,4 +169,36 @@ renderTitle()메소드를 통해 현재날짜와 남은 할 일을 갱신한다.
 이 방식은 화면깜박임이 발생될 수 있으며, 자원적으로도 효율적이지 않다.
 따라서 할 일을 추가할 경우 기존에 있는 할 일들은 지우지 말고 그 상태에서 추가되어야 바람직 할 것 이다.
 이 부분에 대해서 추후 포스팅 예정이다..
+```
+
+## 수정 완료
+```
+원래 포스팅했던 내용은 할 일을 추가할 때마다 다 지우고 처음부터 그리는 방식이다.
+이 방식은 위에도 언급했지만 비효율적이다. 그렇기 때문에
+할 일을 추가하면 기존 할 일은 그대로 두고 추가되는 것만 그리는 방식으로 수정했다.
+아래와 같이 [B]부분과 [C]부분을 수정하면 된다.
+원래는 할 일의 리스트를 getList()로 모두 받아온 뒤, forEach문을 처음부터 돌면서 그렸지만
+getList()로 받아온 것을 slice()메소드를 통해 현재 할일의 개수를 start인덱스를 주어서
+마지막 할 일의 다음부터 그리도록 변경하였다.
+```
+``` js
+  constructor(todos) {
+    this.num = 0;
+    this.todoManager = new TodoManager(todos);
+    this.todoContainerEl = document.querySelector(".todo-container");
+    this.titleEl = document.querySelector(".title h2");
+    this.plusBtnEl = document.querySelector(".add-todo button");
+    this.renderTodos(); 
+    this.bindEvents(); 
+  }
+
+  renderTodos() {  
+    const todoCount = document.getElementsByClassName('todo').length;
+    this.todoManager.getList().slice(todoCount).forEach(todo => {  
+      const todoEl = this.createTodoEl(todo, this.num); 
+      this.todoContainerEl.appendChild(todoEl); 
+      console.log(this.num++);
+    });
+    this.renderTitle(); 
+  }
 ```
