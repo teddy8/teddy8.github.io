@@ -1,6 +1,6 @@
 ---
 layout: post   
-title:  " JavaScript call apply "
+title:  " JavaScript call apply bind"
 categories: JavaScript
 comments: true
 tags: JavaScript js 
@@ -10,11 +10,11 @@ author: teddy8
 {:toc}
 
 ```
-call apply 메소드에 대해 정리한다.
+call, apply, bind 메소드에 대해 정리한다.
 ```
 
 ## 실
-```
+``` 
 좋다
 ```
 
