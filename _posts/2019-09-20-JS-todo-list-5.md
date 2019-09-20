@@ -105,3 +105,6 @@ saveToLocalStorage()메소드를 호출한다.
 
 [E] 할 일 리스트를 json문자열로 바꿔서 로컬스토리지의 setItem을 통해 데이터를 저장한다.
 ```
+
+## 소스코드 링크
+전체 소스코드 링크 : [https://github.com/teddy8/vanilla-js-todolist](https://github.com/teddy8/vanilla-js-todolist)
