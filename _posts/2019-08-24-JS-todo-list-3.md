@@ -1,6 +1,6 @@
 ---
 layout: post   
-title:  " JavaScript 투두리스트(Todo List) (1/3)"
+title:  " JavaScript 투두리스트(Todo List) (3/5)"
 categories: JavaScript
 comments: true
 tags: JavaScript js 
