@@ -83,7 +83,7 @@ class TodoApp {
         this.todoManager.getList()[index].toggle();
         this.renderTitle();
       }
-      if(evt.target.className == 'close') {
+      if(evt.target.className == 'close') { // [A]
         const index = todoEl.dataset.todoId;
         todoEl.remove();
         this.todoManager.delTodo(index);
@@ -147,7 +147,7 @@ class TodoManager {
     return newTodo;
   }
 
-  delTodo(index) {
+  delTodo(index) { // [A]
     this._todos = this._todos.filter(function(obj) {
       return obj.id != index;
     });
@@ -169,4 +169,13 @@ class TodoManager {
 }
 
 export {Todo, TodoManager};
+```
+
+```
+삭제 기능의 핵심부분은 index.js와 models.js에 [A]로 주석친 곳이다.
+먼저, remove()를 사용해 화면에 보이는 아이템을 제거해준다. 
+그 후, 모델클래스로 생성한 인스턴스에 동기화시켜주기 위해
+dataset의 todoId값을 가져와 삭제할 아이템의 고유키값을 delTodo()메소드로 전달한다. 
+해당 키값을 갖지 않는 아이템을 filter해준다. 
+즉, 해당 키값을 갖는 아이템은 제거된다.
 ```
