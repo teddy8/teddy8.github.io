@@ -44,7 +44,7 @@ author: teddy8
 
 - 런타임(runtime) 생성 가능
 
-- 익명(anonymous)으로 생성 가능
+* 익명(anonymous)으로 생성 가능
 
 #### 이런 추가조건으로 봤을 때 C의 함수는 1급 함수로 볼 수 없다.
 
