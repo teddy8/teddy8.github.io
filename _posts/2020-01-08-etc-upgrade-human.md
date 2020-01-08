@@ -9,7 +9,7 @@ author: teddy8
 * content
 {:toc}
 
-![](/assets\img\etc\office_workers.jpg)
+![](/assets\img\etc\office_workers.jpg){: width="100%" height="100%"}
 
 ## 유
 
